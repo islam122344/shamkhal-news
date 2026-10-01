@@ -78,6 +78,10 @@
       photoViewerImage.alt = thumbnail.alt;
       photoViewer.showModal();
     }));
+    document.querySelectorAll('.media-grid img, .photo-viewer__image').forEach((image) => {
+      image.addEventListener('contextmenu', (event) => event.preventDefault());
+      image.addEventListener('dragstart', (event) => event.preventDefault());
+    });
     document.querySelector('#photoViewerClose').addEventListener('click', () => photoViewer.close());
     photoViewer.addEventListener('click', (event) => {
       if (event.target === photoViewer) photoViewer.close();
