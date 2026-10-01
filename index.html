@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="История о двух собаках и материалы читателя.">
+  <title>Шамхал в курсе | История о собаках</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="topline">
+      <div class="wrap topline__inner">
+        <span>Четверг, 1 октября 2026</span>
+        <span class="topline__weather">Шамхал <strong>+18°</strong> · ясно</span>
+      </div>
+    </div>
+    <div class="wrap header-main">
+      <button class="menu-button" id="menuButton" type="button" aria-label="Открыть меню"><span></span><span></span><span></span></button>
+      <a class="brand" href="#" aria-label="Шамхал в курсе — на главную"><span class="brand__mark">Ш</span><span>Шамхал в курсе</span></a>
+      <nav class="main-nav" id="mainNav" aria-label="Разделы сайта">
+        <a class="active" href="#latest">История</a>
+        <a href="#reader-media">Фото и видео</a>
+      </nav>
+      <button class="search-button" id="searchButton" type="button" aria-label="Открыть поиск">⌕ <span>Поиск</span></button>
+    </div>
+    <form class="search-panel wrap" id="searchPanel" role="search">
+      <label for="searchInput">Найти в публикации</label>
+      <div class="search-panel__row"><input id="searchInput" type="search" placeholder="Поиск по материалам о собаках"><button type="submit">Найти</button></div>
+      <p id="searchMessage" aria-live="polite"></p>
+    </form>
+  </header>
+
+  <main>
+    <section class="wrap breaking" aria-label="Публикация"><span>История</span><p>Фото и видео читателя о двух собаках</p><a href="#article-1">Читать →</a></section>
+    <section class="wrap lead-grid" id="latest">
+      <article class="lead-story" id="article-1">
+        <div class="story-copy">
+          <div class="meta"><span>Собаки</span><time datetime="2026-10-01">1 октября 2026</time></div>
+          <h1>Фотографии и видео читателя о двух собаках</h1>
+          <p>К публикации добавлены материалы, предоставленные читателем. Лица на фото закрыты автором; в видео сохранена исходная звуковая дорожка.</p>
+          <a class="read-more" href="#reader-media">Смотреть материалы <span>↘</span></a>
+        </div>
+      </article>
+    </section>
+
+    <section class="wrap reader-media" id="reader-media" aria-labelledby="reader-media-title">
+      <div class="section-heading"><h2 id="reader-media-title">Материалы читателя</h2><span class="media-note">Лица обезличены</span></div>
+      <div class="media-grid">
+        <figure class="media-card media-card--video"><video controls playsinline preload="metadata" poster="media/photo-1.jpg" aria-label="Видео с места происшествия, предоставленное читателем"><source src="media/video-reader.mp4" type="video/mp4">Ваш браузер не поддерживает воспроизведение видео.</video><figcaption>Видео с места происшествия · материал читателя, со звуком</figcaption></figure>
+        <figure class="media-card"><button class="media-open" type="button" aria-label="Открыть фото на весь экран"><img src="media/photo-1.jpg" alt="Фотография читателя с закрытым лицом"></button><figcaption>Человек на фото</figcaption></figure>
+        <figure class="media-card"><button class="media-open" type="button" aria-label="Открыть фото на весь экран"><img src="media/photo-2.jpg" alt="Фотография читателя с закрытым лицом"></button><figcaption>Человек на фото</figcaption></figure>
+        <figure class="media-card"><button class="media-open" type="button" aria-label="Открыть фото на весь экран"><img src="media/photo-3.jpg" alt="Фотография читателя с закрытым лицом"></button><figcaption>Человек на фото</figcaption></figure>
+        <figure class="media-card"><button class="media-open" type="button" aria-label="Открыть фото на весь экран"><img src="media/photo-4.jpg" alt="Фотография читателя с закрытым лицом"></button><figcaption>Человек на фото</figcaption></figure>
+        <figure class="media-card"><button class="media-open" type="button" aria-label="Открыть фото на весь экран"><img src="media/photo-5.jpg" alt="Фотография читателя с закрытым лицом"></button><figcaption>Человек на фото</figcaption></figure>
+        <figure class="media-card"><button class="media-open" type="button" aria-label="Открыть фото на весь экран"><img src="media/photo-6.jpg" alt="Фотография читателя с закрытым лицом"></button><figcaption>Человек на фото</figcaption></figure>
+      </div>
+    </section>
+
+  </main>
+
+  <dialog class="photo-viewer" id="photoViewer" aria-label="Просмотр фотографии">
+    <button class="photo-viewer__close" id="photoViewerClose" type="button" aria-label="Закрыть фото">&times;</button>
+    <img class="photo-viewer__image" id="photoViewerImage" alt="">
+  </dialog>
+
+  <footer class="footer"><div class="wrap footer__inner"><a class="brand" href="#"><span class="brand__mark">Ш</span><span>Шамхал в курсе</span></a><p>История о двух собаках · материалы читателя</p><div><a href="#latest">К публикации</a><a href="#reader-media">Фото и видео</a></div></div></footer>
+  <script>
+    const searchPanel = document.querySelector('#searchPanel');
+    document.querySelector('#searchButton').addEventListener('click', () => { searchPanel.classList.toggle('search-panel--open'); if (searchPanel.classList.contains('search-panel--open')) document.querySelector('#searchInput').focus(); });
+    document.querySelector('#menuButton').addEventListener('click', () => document.querySelector('#mainNav').classList.toggle('main-nav--open'));
+    document.querySelector('#searchPanel').addEventListener('submit', (event) => { event.preventDefault(); const value = document.querySelector('#searchInput').value.trim(); document.querySelector('#searchMessage').textContent = value ? `Ищем материалы по запросу «${value}»…` : 'Введите запрос для поиска.'; });
+    const photoViewer = document.querySelector('#photoViewer');
+    const photoViewerImage = document.querySelector('#photoViewerImage');
+    document.querySelectorAll('.media-open').forEach((button) => button.addEventListener('click', () => {
+      const thumbnail = button.querySelector('img');
+      photoViewerImage.src = thumbnail.src;
+      photoViewerImage.alt = thumbnail.alt;
+      photoViewer.showModal();
+    }));
+    document.querySelector('#photoViewerClose').addEventListener('click', () => photoViewer.close());
+    photoViewer.addEventListener('click', (event) => {
+      if (event.target === photoViewer) photoViewer.close();
+    });
+  </script>
+</body>
+</html>
